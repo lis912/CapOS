@@ -2,11 +2,12 @@ package capos
 
 import (
 	"fmt"
-	"golang.org/x/sys/windows/registry"
 	"os/exec"
 	"strconv"
 	"strings"
 	"time"
+
+	"golang.org/x/sys/windows/registry"
 )
 
 // 审计策略，系统下的审计测评统计

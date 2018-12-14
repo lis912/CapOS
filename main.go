@@ -3,16 +3,9 @@ package main
 import (
 	"bufio"
 	"capos"
-	// "errors"
 	"fmt"
 	"os"
 	"outs"
-	// "os/exec"
-	// "strings"
-	// "time"
-	// "net"
-	// "strings"
-	// "time"
 )
 
 const exportinfo = `
