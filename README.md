@@ -1,1 +1,0 @@
-Security check for Windows.

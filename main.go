@@ -6,24 +6,29 @@ import (
 	"fmt"
 	"os"
 	"outs"
+	"time"
 )
 
-const exportinfo = `
+/* const exportinfo = `
 	1) 生成TXT数据
 	2) 生成docx测评记录文档(Office2010版本以上打开)
 	3) 同时生成以上
-
-`
+` */
 
 func main() {
 
+	fmt.Println("Capos> " + time.Now().Format("[15:04:05") + " -> 正在检查系统安全配置]")
 	// 获取系统数据
 	osdata := capos.CapOS()
 	// PrintTxtTB格式化osdata输出到命令行界面，并返回字符串供 Outdocx输出到文本文件中
 	s := outs.PrintTxtTB(osdata)
 
-	fmt.Printf("%s\n\n", exportinfo)
+	// fmt.Printf("%s\n\n", exportinfo)
 	reader := bufio.NewReader(os.Stdin)
+
+	fmt.Println("Capos> " + time.Now().Format("[15:04:05") + " -> TXT文档已生成在当前目录！]")
+	outs.OutdateTxt(osdata.Systeminfo.ExportFileName, s)
+
 	for {
 		fmt.Print("Capos> ")
 		// Read the keyboad input.
@@ -36,7 +41,8 @@ func main() {
 		}
 		instr := capos.ConvertToString(input, "gbk", "utf-8")
 		instr = capos.RemoveEnt(instr)
-		switch instr {
+
+		/* switch instr {
 		case "1":
 			fmt.Println("Capos> 文档已生成在当前目录！")
 			outs.OutdateTxt(osdata.Systeminfo.ExportFileName, s)
@@ -51,7 +57,7 @@ func main() {
 			fmt.Println("Capos> ")
 			continue
 
-		}
+		} */
 
 	}
 }

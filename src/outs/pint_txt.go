@@ -3,8 +3,10 @@ package outs
 import (
 	"capos"
 	"fmt"
-	"github.com/bndr/gotabulate"
 	"os"
+	"time"
+
+	"github.com/bndr/gotabulate"
 )
 
 // 打印输出表格到命令行界面，并且返回界面内容到字符串
@@ -24,17 +26,29 @@ func PrintTxtTB(os capos.OsDate) string {
 
 	// 开始打印所有附录信息：
 	// 获取本地用户状态
+	fmt.Println("Capos> " + time.Now().Format("[15:04:05") + " -> 获取本地用户状态]")
 	totstr = fmt.Sprintf("%s\n\n%s", totstr, capos.PsysUser())
 	// 打印systeminfo输出
+	fmt.Println("Capos> " + time.Now().Format("[15:04:05") + " -> 获取系统信息]")
 	totstr = fmt.Sprintf("%s\n\n%s", totstr, capos.Psysteminfo())
 	// 打印所有的补丁情况
+	fmt.Println("Capos> " + time.Now().Format("[15:04:05") + " -> 获取系统补丁信息]")
 	totstr = fmt.Sprintf("%s\n\n%s", totstr, capos.Pkbinfo())
+
+	// 打印所有已经安装程序输出
+	fmt.Println("Capos> " + time.Now().Format("[15:04:05") + " -> 获取系统已安装程序]")
+	totstr = fmt.Sprintf("%s\n\n%s", totstr, capos.PinstallExe())
+
 	// 打印所有运行的服务
+	fmt.Println("Capos> " + time.Now().Format("[15:04:05") + " -> 获取系统服务信息]")
 	totstr = fmt.Sprintf("%s\n\n%s", totstr, capos.PnowServer())
 	// 打印所有运行进程
+	fmt.Println("Capos> " + time.Now().Format("[15:04:05") + " -> 获取进程信息]")
 	totstr = fmt.Sprintf("%s\n\n%s", totstr, capos.Pnowpross())
-	// 打印所有已经安装程序输出
-	totstr = fmt.Sprintf("%s\n\n%s", totstr, capos.PinstallExe())
+
+	// 打印所有端口占用信息
+	fmt.Println("Capos> " + time.Now().Format("[15:04:05") + " -> 获取系统端口连接信息]")
+	totstr = fmt.Sprintf("%s\n\n%s", totstr, capos.Pportinfo())
 
 	return totstr
 }

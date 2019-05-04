@@ -3,9 +3,6 @@ package capos
 import (
 	"fmt"
 	"net"
-	// "os"
-	// "os/exec"
-	// "strconv"
 	"strings"
 	"time"
 )

@@ -64,6 +64,14 @@ func Psysteminfo() string {
 	return fmt.Sprintf("--系统信息-------------%s", retstr)
 }
 
+func Pportinfo() string {
+	cmdstring := []string{"/C", "netstat", "-nao"}
+	out := Prinfcmd("cmd", cmdstring)
+
+	return fmt.Sprintf("--端口占用信息-------------%s", out)
+
+}
+
 // 打印输出系统命令
 func Prinfcmd(cmdtype string, cmdslice []string) string {
 	out, err := exec.Command(cmdtype, cmdslice...).Output()

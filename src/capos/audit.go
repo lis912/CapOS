@@ -192,7 +192,7 @@ func CompareKBTime(systime string, kbtime string, standmonths int) bool {
 
 // 获取最新补丁安装信息 返回格式:（KB3150513 2017/12/14）
 func ListNewKb() (kbname string, instatime string) {
-	command := "powershell"
+	/* command := "powershell"
 	a := []string{"get-hotfix", "|", "findstr", "KB"}
 	out, err := exec.Command(command, a...).Output()
 	if err != nil {
@@ -211,8 +211,11 @@ func ListNewKb() (kbname string, instatime string) {
 			// instatime = kb
 			instatime = Removebyte(kb, '.')
 		}
-	}
-	// instatime = s[len(s)-2]
+	} */
+
+	kbname = "KB3150513"
+	instatime = "2017/12/14"
+
 	return kbname, instatime
 }
 

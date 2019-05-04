@@ -5,6 +5,15 @@ import (
 	"fmt"
 )
 
+type Singctr struct {
+	Nam string // 控制项
+	Ctr string // 测评项
+	Ret string // 结果记录
+	Deg string // 整体符合度
+	Com string // 整改建议
+	Rem string // 备注
+}
+
 var showos capos.OsDate
 
 func init() {
@@ -14,29 +23,6 @@ func init() {
 func firstexe() {
 	showos = capos.CapOS()
 }
-
-// 本模块输出的总数据结构
-// type OsDate struct {
-// 	LogPolicy UseIdPwd  // 系统登录方式
-// 	PwdPolicy Passwd    // 口令强度策略
-// 	LogFaPicy Logfaile  // 登录失败策略
-// 	RemoMan   RemoManag // 远程管理方式
-// 	LocUser   Userinfo  // 检查重复账户
-
-// 	Access  Accesctr         // 访问权限和共享
-// 	DefaUse DefaultUseAccess // 关于默认账户的访问权限
-// 	Nousers NouSers          // 无多余重复的用户
-
-// 	Audit AuditPolicy // 审计策略
-
-// 	NoLastname InfoProtion      // 剩余信息保护
-// 	VirMemPwd  VitmenRemove     // 剩余信息保护2
-// 	Patch      PatchPortUpgrade // 补丁情况和端口情况自动升级
-
-// 	LoginTimeoutLock Screenlock // 屏幕超时锁定
-
-// 	Systeminfo Sysinfos // 系统软硬信息
-// }
 
 // 系统审计
 func Auditstate() (PwdTable []Singctr) {
@@ -252,14 +238,14 @@ func FormaPwdTxt(tmp capos.Passwd, tmp2 capos.VitmenRemove) (PwdTable []Singctr)
 		PwdTable = append(PwdTable, s)
 
 		s.Nam = "密码最长使用期限"
-		s.Ret = tmp.Agewd.Val
-		s.Deg = RetDeg(tmp.Agewd.Deg)
+		s.Ret = tmp.Longwd.Val
+		s.Deg = RetDeg(tmp.Longwd.Deg)
 		s.Com = "70"
 		PwdTable = append(PwdTable, s)
 
 		s.Nam = "密码最短使用期限"
-		s.Ret = tmp.Longwd.Val
-		s.Deg = RetDeg(tmp.Longwd.Deg)
+		s.Ret = tmp.Agewd.Val
+		s.Deg = RetDeg(tmp.Agewd.Deg)
 		s.Com = "2"
 		PwdTable = append(PwdTable, s)
 
